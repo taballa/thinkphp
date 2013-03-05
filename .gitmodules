@@ -1,0 +1,3 @@
+[submodule "thinkphp-extend"]
+	path = thinkphp-extend
+	url = git@github.com:liu21st/extend

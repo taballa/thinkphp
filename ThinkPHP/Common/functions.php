@@ -284,6 +284,15 @@ function U($url='',$vars='',$suffix=true,$redirect=false,$domain=false) {
     if($domain) {
         $url   =  (is_ssl()?'https://':'http://').$domain.$url;
     }
+
+    // http://www.thinkphp.cn/topic/572.html
+    $rule = C('URL_ROUTE_REVERSE_RULES');
+    if(is_array($rule) && C('URL_ROUTER_ON'))
+    {
+        $url = preg_replace(array_keys($rule), array_values($rule), $url);
+    }
+
+
     if($redirect) // 直接跳转URL
         redirect($url);
     else
